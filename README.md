@@ -1,16 +1,71 @@
-# React + Vite
+🧠 AI Resume Analyzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An intelligent web app that helps users analyze and improve their resumes using AI. It evaluates resumes for keyword strength, formatting, and job relevance—helping users make their resumes ATS-friendly and job-ready.
 
-Currently, two official plugins are available:
+🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+📄 Resume Upload: Upload PDF or DOCX resumes for instant analysis
 
-## React Compiler
+🧩 AI-Powered Insights: Get recommendations on skills, keywords, and tone
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+📊 Score Breakdown: Visual scoring for content, structure, and relevance
 
-## Expanding the ESLint configuration
+🌙 Modern UI: Built with React + Tailwind CSS + Framer Motion
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🔄 Fast & Responsive: Optimized for all devices
+
+🏗 Tech Stack
+
+Frontend: React (Vite)
+Styling: Tailwind CSS
+Animations: Framer Motion
+HTTP Client: Axios
+Backend (optional): Node.js / Express with AI API integration
+
+⚙️ Setup Instructions
+1️⃣ Clone the Repository
+git clone https://github.com/<your-username>/ai-resume-analyzer.git
+cd ai-resume-analyzer
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Run the App
+npm run dev
+
+
+The app will be available at:
+👉 http://localhost:5173/
+
+📁 Folder Structure
+src/
+ ├── api/
+ │    └── analyzeResume.js
+ ├── components/
+ │    ├── Navbar.jsx
+ │    ├── UploadSection.jsx
+ │    ├── AnalysisResult.jsx
+ │    ├── Footer.jsx
+ ├── App.jsx
+ ├── index.css
+ └── main.jsx
+
+🧠 Future Enhancements
+
+Integration with OpenAI / Gemini API for deeper resume analysis
+
+Export improved resume suggestions
+
+Personalized job match score
+
+Dark/light theme toggle
+
+🤝 Contributing
+
+Pull requests are welcome!
+If you’d like to add new features or fix issues, please fork the repo and open a PR.
+
+📜 License
+
+This project is open-source and available under the MIT License
+.
