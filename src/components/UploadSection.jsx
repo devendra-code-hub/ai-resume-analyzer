@@ -1,49 +1,51 @@
-import React ,{useState} from "react";
-import {motion} from "framer-motion";
-import {analyzeResume} from "../api/analyzeResume";
+import React, { useState } from "react";
+import { analyzeResume } from "../api/analyzeResume"; // ✅ correct import
 import AnalysisResult from "./AnalysisResult";
 
-const UploadSection =()=>{
-    const[resumeText ,setResumeText]=useState(" ");
-    const[result,setResult]=usestate(null);
-    const[loading,setloading]=usestate(false);
+const UploadSection = () => {
+  const [resumeText, setResumeText] = useState("");
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-    const handleAnalyze=async()=>{
-        if(!resume.Text.trim()) return alert("Please paste your resume text!");
-        setLoading(true);
-        const response=await analyzeResume(resumeText);
-        setResult(response);
-        setLoading(false);
-    };
+  const handleAnalyze = async () => {
+    if (!resumeText.trim()) return alert("Please paste your resume text first!");
+    setLoading(true);
+    try {
+      const data = await analyzeResume(resumeText);
+      setResult(data);
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
+  };
 
- 
-return(
-    <div className="max-w-2xl mx-auto mt-8 bg-white p-6 rounded -2xl shadow-md">
-        <motion.h2
-        className="text-2xl font-semibold mb-4 text-center"
-        initial={{opacity:0}}
-        animate={{opacity:1}}
-        transition={{duration:0.8}}
-        >
-            Paste Your Resume Text Below
-        </motion.h2>
+  return (
+    <div className="flex flex-col items-center justify-center mt-10">
+      <div className="bg-white p-6 rounded-xl shadow-lg w-3/4 max-w-2xl">
+        <h2 className="text-2xl font-semibold text-center mb-4">
+          Paste Your Resume Text Below
+        </h2>
         <textarea
-        className = "w-full h-40 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
-        placeholder = "Paste your resume content here..."
-        value = {resumeText}
-        onChange = {(e) => setResumeText(e,target.value)}
-        /> 
-        <button 
-            className  = "mt-4 w-full br-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition disabled:bg-gray-400"
-            onClick = {handleAnalyze}
-            disabled = {loading}
-            >
-                 {loading ? "Analyzing..." : " Analyze Resume"}
+          className="w-full border border-blue-400 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          rows="8"
+          value={resumeText}
+          onChange={(e) => setResumeText(e.target.value)}
+          placeholder="Paste your resume text here..."
+        ></textarea>
+        <button
+          onClick={handleAnalyze}
+          disabled={loading}
+          className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
+        >
+          {loading ? "Analyzing..." : "Analyze Resume"}
         </button>
-   
-        {result && <AnalysisResult result = {result} /> }
-         
+      </div>
+
+      {result && <AnalysisResult result={result} />}
     </div>
-);
+  );
 };
+
 export default UploadSection;
